@@ -14,7 +14,7 @@ set -uo pipefail
 NET=pdsentinel-test-net
 DB=pdsentinel-test-db
 SHARED="$(cd "$(dirname "$0")" && pwd)/.shared"
-PLUGIN="$(cd "$(dirname "$0")/.." && pwd)/wp-sentinel.php"
+PLUGIN="$(cd "$(dirname "$0")/.." && pwd)/sentinel.php"
 WPVOL=pdsentinel-test-wp
 
 PASS=0; FAIL=0
@@ -73,7 +73,7 @@ wp config set SENTINEL_EMAIL   "alerts@test.local"                >/dev/null
 docker run --rm -v "$WPVOL":/var/www/html -v "$(dirname "$PLUGIN")":/src -v "$(pwd)":/test \
   -u0:0 wordpress:cli sh -c \
   'mkdir -p /var/www/html/wp-content/mu-plugins && \
-   cp /src/wp-sentinel.php /var/www/html/wp-content/mu-plugins/ && \
+   cp /src/sentinel.php /var/www/html/wp-content/mu-plugins/ && \
    cp /test/mail-capture.php /var/www/html/wp-content/mu-plugins/ && \
    chown -R 33:33 /var/www/html/wp-content/mu-plugins' >/dev/null
 

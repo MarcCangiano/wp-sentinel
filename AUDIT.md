@@ -17,7 +17,7 @@ older client sites still run it.
 **Behavior:** the suite in `test/` runs a real WordPress 6.5 against a real
 MariaDB and asserts each signal end to end, including the negative cases —
 that creating an author is silent, that a rescan does not re-alert, that the
-heartbeat does not email. **19 assertions, all passing**, last run 2026-08-19.
+heartbeat does not email. **24 assertions, all passing**, last run 2026-08-19.
 
 Two of the first failures were bugs in the tests rather than the plugin (a
 `grep -c` that printed its count *and* a fallback zero, and an assertion that
